@@ -24,6 +24,9 @@ class VerticalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun findFirstVisibleItemPosition() =
         getHorizontalLayoutManager().findFirstVisibleItemPosition()
 
-    private fun getHorizontalLayoutManager() =
-        itemView.horizontal_recyclerview.layoutManager as LinearLayoutManager
+    fun getHorizontalLayoutManager() =
+        getHorizontalRecyclerView().layoutManager as LinearLayoutManager
+
+    fun getHorizontalRecyclerView(): RecyclerView =
+        itemView.horizontal_recyclerview
 }
