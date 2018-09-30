@@ -1,13 +1,13 @@
 package ca.nick.nestedrecyclerviewfun.ui
 
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import ca.nick.nestedrecyclerviewfun.utils.StartSnapHelper
 import kotlinx.android.synthetic.main.item_outer.view.*
 
 class TheOuterViewHolder(view: View, viewPool: RecyclerView.RecycledViewPool) :
-    RecyclerView.ViewHolder(view) {
+    androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
 
     private val innerAdapter = TheInnerAdapter()
     private val snapHelper = StartSnapHelper()

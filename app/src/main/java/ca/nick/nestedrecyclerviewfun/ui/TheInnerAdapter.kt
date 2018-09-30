@@ -1,6 +1,6 @@
 package ca.nick.nestedrecyclerviewfun.ui
 
-import android.support.v7.recyclerview.extensions.ListAdapter
+import androidx.recyclerview.widget.ListAdapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import ca.nick.nestedrecyclerviewfun.R
