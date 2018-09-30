@@ -51,7 +51,7 @@ class TheFragment : Fragment() {
         // if the user changed the scroll position of visible items and those items weren't
         // ever detached, then their positions wouldn't be tracked in verticalAdapter.horizonalScrollPositions.
         // the logic below reconciles that absence.
-        val layoutManager = vertical_recyclerview.layoutManager as LinearLayoutManager
+        val layoutManager = getVerticalLayoutManager()
         val firstVisible = layoutManager.findFirstVisibleItemPosition()
         val lastVisible = layoutManager.findLastVisibleItemPosition()
 
@@ -63,4 +63,7 @@ class TheFragment : Fragment() {
 
         return horizontalScrollPositions
     }
+
+    private fun getVerticalLayoutManager() =
+        vertical_recyclerview.layoutManager as LinearLayoutManager
 }
