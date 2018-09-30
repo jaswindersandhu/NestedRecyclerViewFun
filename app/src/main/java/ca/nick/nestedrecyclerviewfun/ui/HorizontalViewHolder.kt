@@ -2,7 +2,7 @@ package ca.nick.nestedrecyclerviewfun.ui
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
-import kotlinx.android.synthetic.main.item_number.view.*
+import kotlinx.android.synthetic.main.item_horizontal.view.*
 
 class HorizontalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 

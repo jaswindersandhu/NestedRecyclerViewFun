@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import ca.nick.nestedrecyclerviewfun.utils.StartSnapHelper
-import kotlinx.android.synthetic.main.item_horizontal.view.*
+import kotlinx.android.synthetic.main.item_vertical.view.*
 
 class VerticalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 

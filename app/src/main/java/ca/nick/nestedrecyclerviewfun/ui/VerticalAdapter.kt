@@ -20,7 +20,7 @@ class VerticalAdapter(val horizonalScrollPositions: SparseIntArrayParcelable)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_horizontal, parent, false)
+            .inflate(R.layout.item_vertical, parent, false)
             .run { VerticalViewHolder(this) }
             .apply {
                 val isPortrait = parent.context.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT

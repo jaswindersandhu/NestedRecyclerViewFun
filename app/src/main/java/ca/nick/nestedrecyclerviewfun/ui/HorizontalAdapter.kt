@@ -9,7 +9,7 @@ class HorizontalAdapter : ListAdapter<Int, HorizontalViewHolder>(HorizontalDiffC
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_number, parent, false)
+            .inflate(R.layout.item_horizontal, parent, false)
             .run { HorizontalViewHolder(this) }
 
     override fun onBindViewHolder(item: HorizontalViewHolder, position: Int) {
