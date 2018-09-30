@@ -1,12 +1,12 @@
 package ca.nick.nestedrecyclerviewfun.ui
 
-import android.content.res.Configuration
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import ca.nick.nestedrecyclerviewfun.R
 import ca.nick.nestedrecyclerviewfun.utils.SparseIntArrayParcelable
+import ca.nick.nestedrecyclerviewfun.utils.isPortrait
 
 class VerticalAdapter(val horizonalScrollPositions: SparseIntArrayParcelable)
     : ListAdapter<List<Int>, VerticalViewHolder>(VerticalDiffCallback) {
@@ -23,7 +23,7 @@ class VerticalAdapter(val horizonalScrollPositions: SparseIntArrayParcelable)
             .inflate(R.layout.item_vertical, parent, false)
             .run { VerticalViewHolder(this) }
             .apply {
-                val isPortrait = parent.context.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
+                val isPortrait = parent.context.isPortrait()
                 getHorizontalLayoutManager().initialPrefetchItemCount = if (isPortrait) {
                     PORTRAIT_PREFETCH
                 } else {
