@@ -2,18 +2,18 @@ package ca.nick.nestedrecyclerviewfun.data
 
 object TheRepository {
 
-    private val _outerList = mutableListOf<List<Int>>()
-    private val _innerList = mutableListOf<Int>()
+    private val _verticalData = mutableListOf<List<Int>>()
+    private val _horizontalData = mutableListOf<Int>()
 
-    val data: List<List<Int>> get() = _outerList
+    val verticalData: List<List<Int>> get() = _verticalData
 
     init {
         for (i in 1..100) {
-            _innerList.add(i)
+            _horizontalData.add(i)
         }
 
         for (i in 1..25) {
-            _outerList.add(_innerList.toList())
+            _verticalData.add(_horizontalData.toList())
         }
     }
 }

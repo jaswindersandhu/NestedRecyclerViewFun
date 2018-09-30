@@ -13,11 +13,11 @@ import kotlinx.android.synthetic.main.fragment_the.*
 
 class TheFragment : Fragment() {
 
-    private lateinit var outerAdapter: TheOuterAdapter
+    private lateinit var verticalAdapter: VerticalAdapter
 
     companion object {
         val TAG: String = TheFragment::class.java.simpleName
-        private const val KEY_INNER_SCROLL_POSITIONS = "inner_scroll_positions"
+        private const val KEY_HORIZONTAL_SCROLL_POSITIONS = "horizontal_scroll_positions"
         fun create() = TheFragment()
     }
 
@@ -30,37 +30,37 @@ class TheFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val innerScrollPositions: SparseIntArrayParcelable =
-            savedInstanceState?.getParcelable(KEY_INNER_SCROLL_POSITIONS) ?: SparseIntArrayParcelable()
-        outerAdapter = TheOuterAdapter(innerScrollPositions)
-        outer_recyclerview.adapter = outerAdapter
+        val horizontalScrollPositions: SparseIntArrayParcelable =
+            savedInstanceState?.getParcelable(KEY_HORIZONTAL_SCROLL_POSITIONS) ?: SparseIntArrayParcelable()
+        verticalAdapter = VerticalAdapter(horizontalScrollPositions)
+        vertical_recyclerview.adapter = verticalAdapter
         // Only necessary for use with CollapsingToolbarLayout
-        outer_recyclerview.isNestedScrollingEnabled = false
-        outerAdapter.submitList(TheRepository.data)
+        vertical_recyclerview.isNestedScrollingEnabled = false
+        verticalAdapter.submitList(TheRepository.verticalData)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putParcelable(KEY_INNER_SCROLL_POSITIONS, getInnerScrollPositions())
+        outState.putParcelable(KEY_HORIZONTAL_SCROLL_POSITIONS, getHorizontalScrollPositions())
     }
 
-    private fun getInnerScrollPositions(): SparseIntArrayParcelable {
-        val innerScrollPositions = outerAdapter.innerScrollPositions
+    private fun getHorizontalScrollPositions(): SparseIntArrayParcelable {
+        val horizontalScrollPositions = verticalAdapter.horizonalScrollPositions
 
-        // inner scroll positions are tracked as the viewholders are detached from their window.
+        // horizontal scroll positions are tracked as the viewholders are detached from their window.
         // if the user changed the scroll position of visible items and those items weren't
-        // ever detached, then their positions wouldn't be tracked in outerAdapter.innerScrollPositions.
+        // ever detached, then their positions wouldn't be tracked in verticalAdapter.horizonalScrollPositions.
         // the logic below reconciles that absence.
-        val layoutManager = outer_recyclerview.layoutManager as LinearLayoutManager
+        val layoutManager = vertical_recyclerview.layoutManager as LinearLayoutManager
         val firstVisible = layoutManager.findFirstVisibleItemPosition()
         val lastVisible = layoutManager.findLastVisibleItemPosition()
 
         for (i in firstVisible..lastVisible) {
-            val outerViewHolder =
-                outer_recyclerview.findViewHolderForAdapterPosition(i) as TheOuterViewHolder
-            innerScrollPositions.put(i, outerViewHolder.findFirstVisibleItemPosition())
+            val verticalViewHolder =
+                vertical_recyclerview.findViewHolderForAdapterPosition(i) as VerticalViewHolder
+            horizontalScrollPositions.put(i, verticalViewHolder.findFirstVisibleItemPosition())
         }
 
-        return innerScrollPositions
+        return horizontalScrollPositions
     }
 }
