@@ -5,6 +5,7 @@ import android.os.Parcelable;
 import android.util.SparseIntArray;
 
 public class SparseIntArrayParcelable extends SparseIntArray implements Parcelable {
+
     public static final Creator<SparseIntArrayParcelable> CREATOR = new Creator<SparseIntArrayParcelable>() {
         @Override
         public SparseIntArrayParcelable createFromParcel(Parcel source) {

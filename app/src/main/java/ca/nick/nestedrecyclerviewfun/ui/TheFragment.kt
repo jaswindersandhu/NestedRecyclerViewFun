@@ -45,11 +45,11 @@ class TheFragment : Fragment() {
     }
 
     private fun getHorizontalScrollPositions(): SparseIntArrayParcelable {
-        val horizontalScrollPositions = verticalAdapter.horizonalScrollPositions
+        val horizontalScrollPositions = verticalAdapter.horizontalScrollPositions
 
         // horizontal scroll positions are tracked as the viewholders are detached from their window.
         // if the user changed the scroll position of visible items and those items weren't
-        // ever detached, then their positions wouldn't be tracked in verticalAdapter.horizonalScrollPositions.
+        // ever detached, then their positions wouldn't be tracked in verticalAdapter.horizontalScrollPositions.
         // the logic below reconciles that absence.
         val layoutManager = getVerticalLayoutManager()
         val firstVisible = layoutManager.findFirstVisibleItemPosition()

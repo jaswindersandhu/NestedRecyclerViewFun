@@ -8,7 +8,7 @@ import ca.nick.nestedrecyclerviewfun.R
 import ca.nick.nestedrecyclerviewfun.utils.SparseIntArrayParcelable
 import ca.nick.nestedrecyclerviewfun.utils.isPortrait
 
-class VerticalAdapter(val horizonalScrollPositions: SparseIntArrayParcelable)
+class VerticalAdapter(val horizontalScrollPositions: SparseIntArrayParcelable)
     : ListAdapter<List<Int>, VerticalViewHolder>(VerticalDiffCallback) {
 
     private val horizontalViewPool = RecyclerView.RecycledViewPool()
@@ -33,7 +33,7 @@ class VerticalAdapter(val horizonalScrollPositions: SparseIntArrayParcelable)
             }
 
     override fun onBindViewHolder(item: VerticalViewHolder, position: Int) {
-        val scrollPosition = horizonalScrollPositions.get(position, 0)
+        val scrollPosition = horizontalScrollPositions.get(position, 0)
         item.bindViewHolder(getItem(position), scrollPosition)
     }
 
@@ -41,6 +41,6 @@ class VerticalAdapter(val horizonalScrollPositions: SparseIntArrayParcelable)
         super.onViewDetachedFromWindow(holder)
         val itemPosition = holder.adapterPosition
         val scrollPosition = holder.findFirstVisibleItemPosition()
-        horizonalScrollPositions.put(itemPosition, scrollPosition)
+        horizontalScrollPositions.put(itemPosition, scrollPosition)
     }
 }
