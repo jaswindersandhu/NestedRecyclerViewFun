@@ -13,7 +13,10 @@ class VerticalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     init {
         snapHelper.attachToRecyclerView(itemView.horizontal_recyclerview)
-        itemView.horizontal_recyclerview.adapter = horizontalAdapter
+        with(itemView.horizontal_recyclerview) {
+            adapter = horizontalAdapter
+            requestDisallowInterceptTouchEvent(true)
+        }
     }
 
     fun bindViewHolder(item: List<Int>, scrollPosition: Int) {
